@@ -1,29 +1,2076 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-const Title = () => (
-  <h1 className="head" tabIndex="1">
-    Namaste React using JSX 🚀
-  </h1>
-);
+/*
+Header
+- Logo
+- Nav Items
+Body
+- Search
+- RestaurantContainer
+  - RestaurantCard
+    - Img
+    - Name of Res, Star Rating, cuisine, delvery time etc
+Footer
+- CopyRight
+- Links
+- Contact
+*/
 
-// React Element
-const heading = (
-  <h1 className="head" tabIndex="1">
-    Namaste React using JSX 🚀
-  </h1>
-);
+const Header = () => {
+  return (
+    <div className="header">
+      <div className="logo-container">
+        <img
+          className="logo"
+          src="https://www.logodesign.net/logo/smoking-burger-with-lettuce-3624ld.png"
+        />
+      </div>
+      <div className="nav-items">
+        <ul>
+          <li>Home</li>
+          <li>About Us</li>
+          <li>Contact Us</li>
+          <li>Cart</li>
+        </ul>
+      </div>
+    </div>
+  );
+};
 
-// React functional Component
+const RestaurantCard = (props) => {
+  const { resData } = props;
 
-const HeadingComponent = () => (
-  <div id="container">
-    <Title />
-    {heading}
-    <h1 className="heading">Namsate React functional component 🚀</h1>
-  </div>
-);
+  const {
+    deliveryTime,
+    costForTwo,
+    avgRating,
+    cuisines,
+    name,
+    cloudinaryImageId,
+  } = resData?.data;
+  return (
+    <div className="res-card" style={{ backgroundColor: "#f0f0f0" }}>
+      <img
+        className="res-logo"
+        alt="res-logo"
+        src={
+          "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/" +
+          cloudinaryImageId
+        }
+      />
+      <h3>{name}</h3>
+      <h4>{cuisines.join(", ")}</h4>
+      <h4>{avgRating} stars</h4>
+      <h4>{costForTwo / 100} for two</h4>
+      <h4>{deliveryTime} minutes</h4>
+    </div>
+  );
+};
+
+const resList = [
+  {
+    type: "restaurant",
+    data: {
+      type: "F",
+      id: "3414",
+      name: "Aroma's Hyderabad House",
+      uuid: "1710a820-6e71-4131-9d06-bc615f75c853",
+      city: "6",
+      area: "Hinjawadi",
+      totalRatingsString: "10000+ ratings",
+      cloudinaryImageId: "cmiib4dln20zbr3xmpqk",
+      cuisines: ["Biryani", "Mughlai", "North Indian", "Chinese"],
+      tags: [],
+      costForTwo: 50000,
+      costForTwoString: "₹500 FOR TWO",
+      deliveryTime: 30,
+      minDeliveryTime: 30,
+      maxDeliveryTime: 30,
+      slaString: "30 MINS",
+      lastMileTravel: 7.400000095367432,
+      slugs: {
+        restaurant: "hyderabad-house-phase-1-hinjewadi",
+        city: "pune",
+      },
+      cityState: "6",
+      address:
+        "KPIT Cummins, Opposite Krishna Petrol Pump, Marunji Road, Hinjewadi, Pune",
+      locality: "Marunji Road",
+      parentId: 487,
+      unserviceable: false,
+      veg: false,
+      select: false,
+      favorite: false,
+      tradeCampaignHeaders: [],
+      aggregatedDiscountInfo: {
+        header: "40% off",
+        shortDescriptionList: [
+          {
+            meta: "40% off | Use TRYNEW",
+            discountType: "Percentage",
+            operationType: "RESTAURANT",
+          },
+        ],
+        descriptionList: [
+          {
+            meta: "40% off up to ₹80 | Use code TRYNEW",
+            discountType: "Percentage",
+            operationType: "RESTAURANT",
+          },
+        ],
+        subHeader: "",
+        headerType: 0,
+        superFreedel: "",
+      },
+      aggregatedDiscountInfoV2: {
+        header: "40% OFF",
+        shortDescriptionList: [
+          {
+            meta: "Use TRYNEW",
+            discountType: "Percentage",
+            operationType: "RESTAURANT",
+          },
+        ],
+        descriptionList: [
+          {
+            meta: "40% off up to ₹80 | Use code TRYNEW",
+            discountType: "Percentage",
+            operationType: "RESTAURANT",
+          },
+        ],
+        subHeader: "",
+        headerType: 0,
+        superFreedel: "",
+      },
+      ribbon: [
+        {
+          type: "PROMOTED",
+        },
+      ],
+      chain: [],
+      feeDetails: {
+        fees: [
+          {
+            name: "distance",
+            fee: 6300,
+            message: "",
+          },
+          {
+            name: "time",
+            fee: 0,
+            message: "",
+          },
+          {
+            name: "special",
+            fee: 0,
+            message: "",
+          },
+        ],
+        totalFees: 6300,
+        message: "",
+        title: "Delivery Charge",
+        amount: "6300",
+        icon: "",
+      },
+      availability: {
+        opened: true,
+        nextOpenMessage: "",
+        nextCloseMessage: "",
+      },
+      longDistanceEnabled: 0,
+      rainMode: "NONE",
+      thirdPartyAddress: false,
+      thirdPartyVendor: "",
+      adTrackingID: "cid=6338922~p=1~eid=00000187-93c2-652f-225f-88bc00b10178",
+      badges: {
+        imageBased: [],
+        textBased: [],
+        textExtendedBadges: [],
+      },
+      lastMileTravelString: "7.4 kms",
+      hasSurge: false,
+      sla: {
+        restaurantId: "3414",
+        deliveryTime: 30,
+        minDeliveryTime: 30,
+        maxDeliveryTime: 30,
+        lastMileTravel: 7.400000095367432,
+        lastMileDistance: 0,
+        serviceability: "SERVICEABLE",
+        rainMode: "NONE",
+        longDistance: "NOT_LONG_DISTANCE",
+        preferentialService: false,
+        iconType: "EMPTY",
+      },
+      promoted: true,
+      avgRating: "4.1",
+      totalRatings: 10000,
+      new: false,
+    },
+    subtype: "basic",
+  },
+  {
+    type: "restaurant",
+    data: {
+      type: "F",
+      id: "97196",
+      name: "Gayatri Restaurant",
+      uuid: "b995b4fb-b754-4b02-ad86-680a04b6b5f6",
+      city: "6",
+      area: "Ravet",
+      totalRatingsString: "1000+ ratings",
+      cloudinaryImageId: "qjnop1omgkleczinzteo",
+      cuisines: ["North Indian"],
+      tags: [],
+      costForTwo: 15000,
+      costForTwoString: "₹150 FOR TWO",
+      deliveryTime: 35,
+      minDeliveryTime: 35,
+      maxDeliveryTime: 35,
+      slaString: "35 MINS",
+      lastMileTravel: 1.100000023841858,
+      slugs: {
+        restaurant: "gayatri-restaurant-wakad-wakad",
+        city: "pune",
+      },
+      cityState: "6",
+      address:
+        "Gayatri restaurant, Shop No-1, Tulip Purple, Pandhare Wasti, Punawale - 411057",
+      locality: "Pandhare Wasti",
+      parentId: 86778,
+      unserviceable: false,
+      veg: true,
+      select: false,
+      favorite: false,
+      tradeCampaignHeaders: [],
+      aggregatedDiscountInfo: {
+        header: "15% off",
+        shortDescriptionList: [
+          {
+            meta: "15% off | Use TRYNEW",
+            discountType: "Percentage",
+            operationType: "RESTAURANT",
+          },
+        ],
+        descriptionList: [
+          {
+            meta: "15% off up to ₹45 | Use code TRYNEW",
+            discountType: "Percentage",
+            operationType: "RESTAURANT",
+          },
+        ],
+        subHeader: "",
+        headerType: 0,
+        superFreedel: "",
+      },
+      aggregatedDiscountInfoV2: {
+        header: "15% OFF",
+        shortDescriptionList: [
+          {
+            meta: "Use TRYNEW",
+            discountType: "Percentage",
+            operationType: "RESTAURANT",
+          },
+        ],
+        descriptionList: [
+          {
+            meta: "15% off up to ₹45 | Use code TRYNEW",
+            discountType: "Percentage",
+            operationType: "RESTAURANT",
+          },
+        ],
+        subHeader: "",
+        headerType: 0,
+        superFreedel: "",
+      },
+      chain: [],
+      feeDetails: {
+        fees: [
+          {
+            name: "distance",
+            fee: 3300,
+            message: "",
+          },
+          {
+            name: "time",
+            fee: 0,
+            message: "",
+          },
+          {
+            name: "special",
+            fee: 0,
+            message: "",
+          },
+        ],
+        totalFees: 3300,
+        message: "",
+        title: "Delivery Charge",
+        amount: "3300",
+        icon: "",
+      },
+      availability: {
+        opened: true,
+        nextOpenMessage: "",
+        nextCloseMessage: "",
+      },
+      longDistanceEnabled: 0,
+      rainMode: "NONE",
+      thirdPartyAddress: false,
+      thirdPartyVendor: "",
+      adTrackingID: "",
+      badges: {
+        imageBased: [],
+        textBased: [],
+        textExtendedBadges: [],
+      },
+      lastMileTravelString: "1.1 kms",
+      hasSurge: false,
+      sla: {
+        restaurantId: "97196",
+        deliveryTime: 35,
+        minDeliveryTime: 35,
+        maxDeliveryTime: 35,
+        lastMileTravel: 1.100000023841858,
+        lastMileDistance: 0,
+        serviceability: "SERVICEABLE",
+        rainMode: "NONE",
+        longDistance: "NOT_LONG_DISTANCE",
+        preferentialService: false,
+        iconType: "EMPTY",
+      },
+      promoted: false,
+      avgRating: "3.7",
+      totalRatings: 1000,
+      new: false,
+    },
+    subtype: "basic",
+  },
+  {
+    type: "restaurant",
+    data: {
+      type: "F",
+      id: "253596",
+      name: "Burger King",
+      uuid: "34842234-8840-418c-9d0c-ef2ca17f4f73",
+      city: "6",
+      area: "Tathawade",
+      totalRatingsString: "10000+ ratings",
+      cloudinaryImageId: "28fb13049b4e55297bb3f703cde63c35",
+      cuisines: ["Burgers", "American"],
+      tags: [],
+      costForTwo: 35000,
+      costForTwoString: "₹350 FOR TWO",
+      deliveryTime: 27,
+      minDeliveryTime: 27,
+      maxDeliveryTime: 27,
+      slaString: "27 MINS",
+      lastMileTravel: 3.5999999046325684,
+      slugs: {
+        restaurant: "burger-king-mitran-tathawade-hinjewadi",
+        city: "pune",
+      },
+      cityState: "6",
+      address:
+        "Burger king, unit no 1 , ground floor Mitran , survey no 81/7 81/8 , Thatwade 411033",
+      locality: "Service Road",
+      parentId: 166,
+      unserviceable: false,
+      veg: false,
+      select: false,
+      favorite: false,
+      tradeCampaignHeaders: [],
+      aggregatedDiscountInfo: {
+        header: "40% off",
+        shortDescriptionList: [
+          {
+            meta: "40% off | Use SWIGGYIT",
+            discountType: "Percentage",
+            operationType: "RESTAURANT",
+          },
+        ],
+        descriptionList: [
+          {
+            meta: "40% off up to ₹80 | Use code SWIGGYIT",
+            discountType: "Percentage",
+            operationType: "RESTAURANT",
+          },
+        ],
+        subHeader: "",
+        headerType: 0,
+        superFreedel: "",
+      },
+      aggregatedDiscountInfoV2: {
+        header: "40% OFF",
+        shortDescriptionList: [
+          {
+            meta: "Use SWIGGYIT",
+            discountType: "Percentage",
+            operationType: "RESTAURANT",
+          },
+        ],
+        descriptionList: [
+          {
+            meta: "40% off up to ₹80 | Use code SWIGGYIT",
+            discountType: "Percentage",
+            operationType: "RESTAURANT",
+          },
+        ],
+        subHeader: "",
+        headerType: 0,
+        superFreedel: "",
+      },
+      chain: [],
+      feeDetails: {
+        fees: [
+          {
+            name: "distance",
+            fee: 3900,
+            message: "",
+          },
+          {
+            name: "time",
+            fee: 0,
+            message: "",
+          },
+          {
+            name: "special",
+            fee: 0,
+            message: "",
+          },
+        ],
+        totalFees: 3900,
+        message: "",
+        title: "Delivery Charge",
+        amount: "3900",
+        icon: "",
+      },
+      availability: {
+        opened: true,
+        nextOpenMessage: "",
+        nextCloseMessage: "",
+      },
+      longDistanceEnabled: 0,
+      rainMode: "NONE",
+      thirdPartyAddress: false,
+      thirdPartyVendor: "",
+      adTrackingID: "",
+      badges: {
+        imageBased: [],
+        textBased: [],
+        textExtendedBadges: [],
+      },
+      lastMileTravelString: "3.5 kms",
+      hasSurge: false,
+      sla: {
+        restaurantId: "253596",
+        deliveryTime: 27,
+        minDeliveryTime: 27,
+        maxDeliveryTime: 27,
+        lastMileTravel: 3.5999999046325684,
+        lastMileDistance: 0,
+        serviceability: "SERVICEABLE",
+        rainMode: "NONE",
+        longDistance: "NOT_LONG_DISTANCE",
+        preferentialService: false,
+        iconType: "EMPTY",
+      },
+      promoted: false,
+      avgRating: "4.1",
+      totalRatings: 10000,
+      new: false,
+    },
+    subtype: "basic",
+  },
+  {
+    type: "restaurant",
+    data: {
+      type: "F",
+      id: "373605",
+      name: "Deli Belly",
+      uuid: "b157caae-fa01-4911-95ab-69128414a529",
+      city: "6",
+      area: "Nigdi",
+      totalRatingsString: "1000+ ratings",
+      cloudinaryImageId: "2cab3b337584d36c974daa2c4bec1f2a",
+      cuisines: ["North Indian", "Chinese", "Beverages"],
+      tags: [],
+      costForTwo: 30000,
+      costForTwoString: "₹300 FOR TWO",
+      deliveryTime: 29,
+      minDeliveryTime: 29,
+      maxDeliveryTime: 29,
+      slaString: "29 MINS",
+      lastMileTravel: 5,
+      slugs: {
+        restaurant: "deli-belly-nigdi-nigdi",
+        city: "pune",
+      },
+      cityState: "6",
+      address:
+        "Balsons Hospitality LLP Plot No-1/27A, HDFC building PCNTDA Nigdi, PCMC Ward No-13,Pune PCMC -411044",
+      locality: "Sector 27",
+      parentId: 70246,
+      unserviceable: false,
+      veg: false,
+      select: false,
+      favorite: false,
+      tradeCampaignHeaders: [],
+      aggregatedDiscountInfo: {
+        header: "50% off",
+        shortDescriptionList: [
+          {
+            meta: "50% off | Use TRYNEW",
+            discountType: "Percentage",
+            operationType: "RESTAURANT",
+          },
+        ],
+        descriptionList: [
+          {
+            meta: "50% off up to ₹100 | Use code TRYNEW",
+            discountType: "Percentage",
+            operationType: "RESTAURANT",
+          },
+        ],
+        subHeader: "",
+        headerType: 0,
+        superFreedel: "",
+      },
+      aggregatedDiscountInfoV2: {
+        header: "50% OFF",
+        shortDescriptionList: [
+          {
+            meta: "Use TRYNEW",
+            discountType: "Percentage",
+            operationType: "RESTAURANT",
+          },
+        ],
+        descriptionList: [
+          {
+            meta: "50% off up to ₹100 | Use code TRYNEW",
+            discountType: "Percentage",
+            operationType: "RESTAURANT",
+          },
+        ],
+        subHeader: "",
+        headerType: 0,
+        superFreedel: "",
+      },
+      ribbon: [
+        {
+          type: "PROMOTED",
+        },
+      ],
+      chain: [],
+      feeDetails: {
+        fees: [
+          {
+            name: "distance",
+            fee: 5100,
+            message: "",
+          },
+          {
+            name: "time",
+            fee: 0,
+            message: "",
+          },
+          {
+            name: "special",
+            fee: 0,
+            message: "",
+          },
+        ],
+        totalFees: 5100,
+        message: "",
+        title: "Delivery Charge",
+        amount: "5100",
+        icon: "",
+      },
+      availability: {
+        opened: true,
+        nextOpenMessage: "",
+        nextCloseMessage: "",
+      },
+      longDistanceEnabled: 0,
+      rainMode: "NONE",
+      thirdPartyAddress: false,
+      thirdPartyVendor: "",
+      adTrackingID: "cid=6349816~p=4~eid=00000187-93c2-652f-225f-88bd00b10411",
+      badges: {
+        imageBased: [],
+        textBased: [],
+        textExtendedBadges: [],
+      },
+      lastMileTravelString: "5 kms",
+      hasSurge: false,
+      sla: {
+        restaurantId: "373605",
+        deliveryTime: 29,
+        minDeliveryTime: 29,
+        maxDeliveryTime: 29,
+        lastMileTravel: 5,
+        lastMileDistance: 0,
+        serviceability: "SERVICEABLE",
+        rainMode: "NONE",
+        longDistance: "NOT_LONG_DISTANCE",
+        preferentialService: false,
+        iconType: "EMPTY",
+      },
+      promoted: true,
+      avgRating: "3.9",
+      totalRatings: 1000,
+      new: false,
+    },
+    subtype: "basic",
+  },
+  {
+    type: "restaurant",
+    data: {
+      type: "F",
+      id: "228489",
+      name: "Gandharv Pure Veg",
+      uuid: "18275031-3f7c-4b14-873d-9e77cc5b3aed",
+      city: "6",
+      area: "Ravet",
+      totalRatingsString: "500+ ratings",
+      cloudinaryImageId: "qodwssocktmnbvkewb1f",
+      cuisines: ["North Indian", "South Indian"],
+      tags: [],
+      costForTwo: 25000,
+      costForTwoString: "₹250 FOR TWO",
+      deliveryTime: 20,
+      minDeliveryTime: 20,
+      maxDeliveryTime: 20,
+      slaString: "20 MINS",
+      lastMileTravel: 1.899999976158142,
+      slugs: {
+        restaurant: "gandharv-pure-veg-ravet-ravet",
+        city: "pune",
+      },
+      cityState: "6",
+      address:
+        "Darshile Heights, Opposite To Lakshmi Mandir, Brt Road, Ravet, Pune",
+      locality: "Brt Road",
+      parentId: 85882,
+      unserviceable: false,
+      veg: true,
+      select: false,
+      favorite: false,
+      tradeCampaignHeaders: [],
+      aggregatedDiscountInfo: {
+        header: "30% off",
+        shortDescriptionList: [
+          {
+            meta: "30% off | Use TRYNEW",
+            discountType: "Percentage",
+            operationType: "RESTAURANT",
+          },
+        ],
+        descriptionList: [
+          {
+            meta: "30% off up to ₹75 | Use code TRYNEW",
+            discountType: "Percentage",
+            operationType: "RESTAURANT",
+          },
+        ],
+        subHeader: "",
+        headerType: 0,
+        superFreedel: "",
+      },
+      aggregatedDiscountInfoV2: {
+        header: "30% OFF",
+        shortDescriptionList: [
+          {
+            meta: "Use TRYNEW",
+            discountType: "Percentage",
+            operationType: "RESTAURANT",
+          },
+        ],
+        descriptionList: [
+          {
+            meta: "30% off up to ₹75 | Use code TRYNEW",
+            discountType: "Percentage",
+            operationType: "RESTAURANT",
+          },
+        ],
+        subHeader: "",
+        headerType: 0,
+        superFreedel: "",
+      },
+      chain: [],
+      feeDetails: {
+        fees: [
+          {
+            name: "distance",
+            fee: 3300,
+            message: "",
+          },
+          {
+            name: "time",
+            fee: 0,
+            message: "",
+          },
+          {
+            name: "special",
+            fee: 0,
+            message: "",
+          },
+        ],
+        totalFees: 3300,
+        message: "",
+        title: "Delivery Charge",
+        amount: "3300",
+        icon: "",
+      },
+      availability: {
+        opened: true,
+        nextOpenMessage: "",
+        nextCloseMessage: "",
+      },
+      longDistanceEnabled: 0,
+      rainMode: "NONE",
+      thirdPartyAddress: false,
+      thirdPartyVendor: "",
+      adTrackingID: "",
+      badges: {
+        imageBased: [],
+        textBased: [],
+        textExtendedBadges: [],
+      },
+      lastMileTravelString: "1.8 kms",
+      hasSurge: false,
+      sla: {
+        restaurantId: "228489",
+        deliveryTime: 20,
+        minDeliveryTime: 20,
+        maxDeliveryTime: 20,
+        lastMileTravel: 1.899999976158142,
+        lastMileDistance: 0,
+        serviceability: "SERVICEABLE",
+        rainMode: "NONE",
+        longDistance: "NOT_LONG_DISTANCE",
+        preferentialService: false,
+        iconType: "EMPTY",
+      },
+      promoted: false,
+      avgRating: "3.7",
+      totalRatings: 500,
+      new: false,
+    },
+    subtype: "basic",
+  },
+  {
+    type: "restaurant",
+    data: {
+      type: "F",
+      id: "36014",
+      name: "Subway",
+      uuid: "a62249bf-6933-4391-8d1b-790981cc4b8a",
+      city: "6",
+      area: "Hinjawadi",
+      totalRatingsString: "5000+ ratings",
+      cloudinaryImageId: "0bf19a82b109b40c2f5c56d00f071a33",
+      cuisines: [
+        "Fast Food",
+        "Healthy Food",
+        "Salads",
+        "Snacks",
+        "Desserts",
+        "Beverages",
+      ],
+      tags: [],
+      costForTwo: 35000,
+      costForTwoString: "₹350 FOR TWO",
+      deliveryTime: 21,
+      minDeliveryTime: 21,
+      maxDeliveryTime: 21,
+      slaString: "21 MINS",
+      lastMileTravel: 1.2000000476837158,
+      slugs: {
+        restaurant: "subway-hinjawadi-wakad",
+        city: "pune",
+      },
+      cityState: "6",
+      address: "Opposite JSPM College, Mumbai Pune Highway, Hinjawadi, Pune",
+      locality: "Hinjawadi",
+      parentId: 2,
+      unserviceable: false,
+      veg: false,
+      select: false,
+      favorite: false,
+      tradeCampaignHeaders: [],
+      aggregatedDiscountInfo: {
+        header: "40% off",
+        shortDescriptionList: [
+          {
+            meta: "40% off | Use TRYNEW",
+            discountType: "Percentage",
+            operationType: "RESTAURANT",
+          },
+        ],
+        descriptionList: [
+          {
+            meta: "40% off up to ₹80 | Use code TRYNEW",
+            discountType: "Percentage",
+            operationType: "RESTAURANT",
+          },
+        ],
+        subHeader: "",
+        headerType: 0,
+        superFreedel: "",
+      },
+      aggregatedDiscountInfoV2: {
+        header: "40% OFF",
+        shortDescriptionList: [
+          {
+            meta: "Use TRYNEW",
+            discountType: "Percentage",
+            operationType: "RESTAURANT",
+          },
+        ],
+        descriptionList: [
+          {
+            meta: "40% off up to ₹80 | Use code TRYNEW",
+            discountType: "Percentage",
+            operationType: "RESTAURANT",
+          },
+        ],
+        subHeader: "",
+        headerType: 0,
+        superFreedel: "",
+      },
+      chain: [],
+      feeDetails: {
+        fees: [
+          {
+            name: "distance",
+            fee: 3300,
+            message: "",
+          },
+          {
+            name: "time",
+            fee: 0,
+            message: "",
+          },
+          {
+            name: "special",
+            fee: 0,
+            message: "",
+          },
+        ],
+        totalFees: 3300,
+        message: "",
+        title: "Delivery Charge",
+        amount: "3300",
+        icon: "",
+      },
+      availability: {
+        opened: true,
+        nextOpenMessage: "",
+        nextCloseMessage: "",
+      },
+      longDistanceEnabled: 0,
+      rainMode: "NONE",
+      thirdPartyAddress: false,
+      thirdPartyVendor: "",
+      adTrackingID: "",
+      badges: {
+        imageBased: [],
+        textBased: [],
+        textExtendedBadges: [],
+      },
+      lastMileTravelString: "1.2 kms",
+      hasSurge: false,
+      sla: {
+        restaurantId: "36014",
+        deliveryTime: 21,
+        minDeliveryTime: 21,
+        maxDeliveryTime: 21,
+        lastMileTravel: 1.2000000476837158,
+        lastMileDistance: 0,
+        serviceability: "SERVICEABLE",
+        rainMode: "NONE",
+        longDistance: "NOT_LONG_DISTANCE",
+        preferentialService: false,
+        iconType: "EMPTY",
+      },
+      promoted: false,
+      avgRating: "4.2",
+      totalRatings: 5000,
+      new: false,
+    },
+    subtype: "basic",
+  },
+  {
+    type: "restaurant",
+    data: {
+      type: "F",
+      id: "2192",
+      name: "Aroma's Hyderabad House",
+      uuid: "d922ca41-5a6e-495b-aae7-a0b386f5538f",
+      city: "6",
+      area: "Pimple Saudagar",
+      totalRatingsString: "10000+ ratings",
+      cloudinaryImageId: "y2hukcrkdh4p4v6djdff",
+      cuisines: ["Biryani", "Mughlai", "North Indian", "Chinese"],
+      tags: [],
+      costForTwo: 50000,
+      costForTwoString: "₹500 FOR TWO",
+      deliveryTime: 31,
+      minDeliveryTime: 31,
+      maxDeliveryTime: 31,
+      slaString: "31 MINS",
+      lastMileTravel: 8.899999618530273,
+      slugs: {
+        restaurant: "aromas-hyderabad-house-pimple-saudagar",
+        city: "pune",
+      },
+      cityState: "6",
+      address: "6/4/7, Kokane Chowk, Rahatni, Pimple Saudagar",
+      locality: "Rahatani Road",
+      parentId: 71,
+      unserviceable: false,
+      veg: false,
+      select: false,
+      favorite: false,
+      tradeCampaignHeaders: [],
+      aggregatedDiscountInfo: {
+        header: "FLAT100 off",
+        shortDescriptionList: [
+          {
+            meta: "FLAT100 off | Use FLATDEAL",
+            discountType: "Flat",
+            operationType: "RESTAURANT",
+          },
+        ],
+        descriptionList: [
+          {
+            meta: "FLAT100 off | Use FLATDEAL",
+            discountType: "Flat",
+            operationType: "RESTAURANT",
+          },
+        ],
+        subHeader: "",
+        headerType: 0,
+        superFreedel: "",
+      },
+      aggregatedDiscountInfoV2: {
+        header: "₹100 OFF",
+        shortDescriptionList: [
+          {
+            meta: "Use FLATDEAL",
+            discountType: "Flat",
+            operationType: "RESTAURANT",
+          },
+        ],
+        descriptionList: [
+          {
+            meta: "FLAT100 off | Use FLATDEAL",
+            discountType: "Flat",
+            operationType: "RESTAURANT",
+          },
+        ],
+        subHeader: "",
+        headerType: 0,
+        superFreedel: "",
+      },
+      ribbon: [
+        {
+          type: "PROMOTED",
+        },
+      ],
+      chain: [],
+      feeDetails: {
+        fees: [
+          {
+            name: "distance",
+            fee: 7300,
+            message: "",
+          },
+          {
+            name: "time",
+            fee: 0,
+            message: "",
+          },
+          {
+            name: "special",
+            fee: 0,
+            message: "",
+          },
+        ],
+        totalFees: 7300,
+        message: "",
+        title: "Delivery Charge",
+        amount: "7300",
+        icon: "",
+      },
+      availability: {
+        opened: true,
+        nextOpenMessage: "",
+        nextCloseMessage: "",
+      },
+      longDistanceEnabled: 0,
+      rainMode: "NONE",
+      thirdPartyAddress: false,
+      thirdPartyVendor: "",
+      adTrackingID: "cid=6338894~p=7~eid=00000187-93c2-652f-225f-88be00b10747",
+      badges: {
+        imageBased: [],
+        textBased: [],
+        textExtendedBadges: [],
+      },
+      lastMileTravelString: "8.8 kms",
+      hasSurge: false,
+      sla: {
+        restaurantId: "2192",
+        deliveryTime: 31,
+        minDeliveryTime: 31,
+        maxDeliveryTime: 31,
+        lastMileTravel: 8.899999618530273,
+        lastMileDistance: 0,
+        serviceability: "SERVICEABLE",
+        rainMode: "NONE",
+        longDistance: "NOT_LONG_DISTANCE",
+        preferentialService: false,
+        iconType: "EMPTY",
+      },
+      promoted: true,
+      avgRating: "4.1",
+      totalRatings: 10000,
+      new: false,
+    },
+    subtype: "basic",
+  },
+  {
+    type: "restaurant",
+    data: {
+      type: "F",
+      id: "8370",
+      name: "Shawarma King",
+      uuid: "64d46a73-8a37-4821-beb4-1c9a2d43bdca",
+      city: "6",
+      area: "Nigdi",
+      totalRatingsString: "10000+ ratings",
+      cloudinaryImageId: "mejooo8lvhyefhdj2ru5",
+      cuisines: ["Lebanese", "Fast Food"],
+      tags: [],
+      costForTwo: 15000,
+      costForTwoString: "₹150 FOR TWO",
+      deliveryTime: 21,
+      minDeliveryTime: 21,
+      maxDeliveryTime: 21,
+      slaString: "21 MINS",
+      lastMileTravel: 3.700000047683716,
+      slugs: {
+        restaurant: "shawarma-king-pradhikaran-nigdi",
+        city: "pune",
+      },
+      cityState: "6",
+      address: "ABC Tower, Opposite Railway Station, Pradhikaran, Akurdi, Pune",
+      locality: "ABC Tower",
+      parentId: 835,
+      unserviceable: false,
+      veg: false,
+      select: false,
+      favorite: false,
+      tradeCampaignHeaders: [],
+      aggregatedDiscountInfo: {
+        header: "20% off",
+        shortDescriptionList: [
+          {
+            meta: "20% off on all orders",
+            discountType: "Percentage",
+            operationType: "RESTAURANT",
+          },
+        ],
+        descriptionList: [
+          {
+            meta: "20% off on all orders",
+            discountType: "Percentage",
+            operationType: "RESTAURANT",
+          },
+        ],
+        subHeader: "",
+        headerType: 0,
+        superFreedel: "",
+      },
+      aggregatedDiscountInfoV2: {
+        header: "20% OFF",
+        shortDescriptionList: [
+          {
+            meta: "",
+            discountType: "Percentage",
+            operationType: "RESTAURANT",
+          },
+        ],
+        descriptionList: [
+          {
+            meta: "20% off on all orders",
+            discountType: "Percentage",
+            operationType: "RESTAURANT",
+          },
+        ],
+        subHeader: "",
+        headerType: 0,
+        superFreedel: "",
+      },
+      chain: [],
+      feeDetails: {
+        fees: [
+          {
+            name: "distance",
+            fee: 3900,
+            message: "",
+          },
+          {
+            name: "time",
+            fee: 0,
+            message: "",
+          },
+          {
+            name: "special",
+            fee: 0,
+            message: "",
+          },
+        ],
+        totalFees: 3900,
+        message: "",
+        title: "Delivery Charge",
+        amount: "3900",
+        icon: "",
+      },
+      availability: {
+        opened: true,
+        nextOpenMessage: "",
+        nextCloseMessage: "",
+      },
+      longDistanceEnabled: 0,
+      rainMode: "NONE",
+      thirdPartyAddress: false,
+      thirdPartyVendor: "",
+      adTrackingID: "",
+      badges: {
+        imageBased: [],
+        textBased: [],
+        textExtendedBadges: [],
+      },
+      lastMileTravelString: "3.7 kms",
+      hasSurge: false,
+      sla: {
+        restaurantId: "8370",
+        deliveryTime: 21,
+        minDeliveryTime: 21,
+        maxDeliveryTime: 21,
+        lastMileTravel: 3.700000047683716,
+        lastMileDistance: 0,
+        serviceability: "SERVICEABLE",
+        rainMode: "NONE",
+        longDistance: "NOT_LONG_DISTANCE",
+        preferentialService: false,
+        iconType: "EMPTY",
+      },
+      promoted: false,
+      avgRating: "4.4",
+      totalRatings: 10000,
+      new: false,
+    },
+    subtype: "basic",
+  },
+  {
+    type: "restaurant",
+    data: {
+      type: "F",
+      id: "56869",
+      name: "Hotel Nisarg ( Special Misal House )",
+      uuid: "ffcf0e6b-26cf-4d6a-b73e-9ff69207d447",
+      city: "6",
+      area: "Ravet",
+      totalRatingsString: "1000+ ratings",
+      cloudinaryImageId: "ncss5ylexusfjvedohfv",
+      cuisines: ["Fast Food"],
+      tags: [],
+      costForTwo: 15000,
+      costForTwoString: "₹150 FOR TWO",
+      deliveryTime: 18,
+      minDeliveryTime: 18,
+      maxDeliveryTime: 18,
+      slaString: "18 MINS",
+      lastMileTravel: 2.200000047683716,
+      slugs: {
+        restaurant: "hotel-nisarg-special-misal-house-nigdi-nigdi",
+        city: "pune",
+      },
+      cityState: "6",
+      address:
+        "Royale Shell, Bhondave Corner, Near D. Y. Opp. Pawana Bank, Ravet, DY Patil College Rd, Ravet, Pune, Maharashtra 411033",
+      locality: "DY Patil College Road",
+      parentId: 100796,
+      unserviceable: false,
+      veg: true,
+      select: false,
+      favorite: false,
+      tradeCampaignHeaders: [],
+      chain: [],
+      feeDetails: {
+        fees: [
+          {
+            name: "distance",
+            fee: 3300,
+            message: "",
+          },
+          {
+            name: "time",
+            fee: 0,
+            message: "",
+          },
+          {
+            name: "special",
+            fee: 0,
+            message: "",
+          },
+        ],
+        totalFees: 3300,
+        message: "",
+        title: "Delivery Charge",
+        amount: "3300",
+        icon: "",
+      },
+      availability: {
+        opened: true,
+        nextOpenMessage: "",
+        nextCloseMessage: "",
+      },
+      longDistanceEnabled: 0,
+      rainMode: "NONE",
+      thirdPartyAddress: false,
+      thirdPartyVendor: "",
+      adTrackingID: "",
+      badges: {
+        imageBased: [],
+        textBased: [],
+        textExtendedBadges: [],
+      },
+      lastMileTravelString: "2.2 kms",
+      hasSurge: false,
+      sla: {
+        restaurantId: "56869",
+        deliveryTime: 18,
+        minDeliveryTime: 18,
+        maxDeliveryTime: 18,
+        lastMileTravel: 2.200000047683716,
+        lastMileDistance: 0,
+        serviceability: "SERVICEABLE",
+        rainMode: "NONE",
+        longDistance: "NOT_LONG_DISTANCE",
+        preferentialService: false,
+        iconType: "EMPTY",
+      },
+      promoted: false,
+      avgRating: "4.3",
+      totalRatings: 1000,
+      new: false,
+    },
+    subtype: "basic",
+  },
+  {
+    type: "restaurant",
+    data: {
+      type: "F",
+      id: "40181",
+      name: "Savali",
+      uuid: "8dae3b52-1613-4474-bcdb-4ef086001339",
+      city: "6",
+      area: "Nigdi",
+      totalRatingsString: "10000+ ratings",
+      cloudinaryImageId: "lbye6vascq2ggicljkkw",
+      cuisines: [
+        "South Indian",
+        "North Indian",
+        "Chinese",
+        "Biryani",
+        "Juices",
+      ],
+      tags: [],
+      costForTwo: 30000,
+      costForTwoString: "₹300 FOR TWO",
+      deliveryTime: 32,
+      minDeliveryTime: 32,
+      maxDeliveryTime: 32,
+      slaString: "32 MINS",
+      lastMileTravel: 6,
+      slugs: {
+        restaurant: "savali-nigdi-nigdi",
+        city: "pune",
+      },
+      cityState: "6",
+      address:
+        "Tilak Rd, Sector No. 24, Pradhikaran, Nigdi, Pimpri-Chinchwad, Maharashtra 411044",
+      locality: "Sector 24",
+      parentId: 7882,
+      unserviceable: false,
+      veg: false,
+      select: false,
+      favorite: false,
+      tradeCampaignHeaders: [],
+      aggregatedDiscountInfo: {
+        header: "40% off",
+        shortDescriptionList: [
+          {
+            meta: "40% off | Use TRYNEW",
+            discountType: "Percentage",
+            operationType: "RESTAURANT",
+          },
+        ],
+        descriptionList: [
+          {
+            meta: "40% off up to ₹80 | Use code TRYNEW",
+            discountType: "Percentage",
+            operationType: "RESTAURANT",
+          },
+        ],
+        subHeader: "",
+        headerType: 0,
+        superFreedel: "",
+      },
+      aggregatedDiscountInfoV2: {
+        header: "40% OFF",
+        shortDescriptionList: [
+          {
+            meta: "Use TRYNEW",
+            discountType: "Percentage",
+            operationType: "RESTAURANT",
+          },
+        ],
+        descriptionList: [
+          {
+            meta: "40% off up to ₹80 | Use code TRYNEW",
+            discountType: "Percentage",
+            operationType: "RESTAURANT",
+          },
+        ],
+        subHeader: "",
+        headerType: 0,
+        superFreedel: "",
+      },
+      ribbon: [
+        {
+          type: "PROMOTED",
+        },
+      ],
+      chain: [],
+      feeDetails: {
+        fees: [
+          {
+            name: "distance",
+            fee: 5700,
+            message: "",
+          },
+          {
+            name: "time",
+            fee: 0,
+            message: "",
+          },
+          {
+            name: "special",
+            fee: 0,
+            message: "",
+          },
+        ],
+        totalFees: 5700,
+        message: "",
+        title: "Delivery Charge",
+        amount: "5700",
+        icon: "",
+      },
+      availability: {
+        opened: true,
+        nextOpenMessage: "",
+        nextCloseMessage: "",
+      },
+      longDistanceEnabled: 0,
+      rainMode: "NONE",
+      thirdPartyAddress: false,
+      thirdPartyVendor: "",
+      adTrackingID: "cid=6339061~p=10~eid=00000187-93c2-652f-225f-88bf00b10a3b",
+      badges: {
+        imageBased: [],
+        textBased: [],
+        textExtendedBadges: [],
+      },
+      lastMileTravelString: "6 kms",
+      hasSurge: false,
+      sla: {
+        restaurantId: "40181",
+        deliveryTime: 32,
+        minDeliveryTime: 32,
+        maxDeliveryTime: 32,
+        lastMileTravel: 6,
+        lastMileDistance: 0,
+        serviceability: "SERVICEABLE",
+        rainMode: "NONE",
+        longDistance: "NOT_LONG_DISTANCE",
+        preferentialService: false,
+        iconType: "EMPTY",
+      },
+      promoted: true,
+      avgRating: "4.0",
+      totalRatings: 10000,
+      new: false,
+    },
+    subtype: "basic",
+  },
+  {
+    type: "restaurant",
+    data: {
+      type: "F",
+      id: "11199",
+      name: "Punjabi TREAT",
+      uuid: "f63d2df8-73f9-4b1e-bd10-7226bf64d999",
+      city: "6",
+      area: "Ravet",
+      totalRatingsString: "10000+ ratings",
+      cloudinaryImageId: "m3pimlxpbfepmtv8ztyk",
+      cuisines: [
+        "Punjabi",
+        "North Indian",
+        "Chinese",
+        "Biryani",
+        "Desserts",
+        "Bengali",
+        "Seafood",
+        "Tandoor",
+        "Beverages",
+      ],
+      tags: [],
+      costForTwo: 40000,
+      costForTwoString: "₹400 FOR TWO",
+      deliveryTime: 21,
+      minDeliveryTime: 21,
+      maxDeliveryTime: 21,
+      slaString: "21 MINS",
+      lastMileTravel: 2.5999999046325684,
+      slugs: {
+        restaurant: "punjabi-treat-nigdi-nigdi",
+        city: "pune",
+      },
+      cityState: "6",
+      address: "New Walhekarwadi Road, Near Prathamesh Wines, Nigdi",
+      locality: "Walhekarwadi Road",
+      parentId: 12956,
+      unserviceable: false,
+      veg: false,
+      select: false,
+      favorite: false,
+      tradeCampaignHeaders: [],
+      aggregatedDiscountInfo: {
+        header: "10% off",
+        shortDescriptionList: [
+          {
+            meta: "10% off on all orders",
+            discountType: "Percentage",
+            operationType: "RESTAURANT",
+          },
+          {
+            meta: "Free Gulab Jamun on orders above ₹399",
+            discountType: "Freebie",
+            operationType: "RESTAURANT",
+          },
+        ],
+        descriptionList: [
+          {
+            meta: "10% off on all orders",
+            discountType: "Percentage",
+            operationType: "RESTAURANT",
+          },
+          {
+            meta: "Free Gulab Jamun on orders above ₹399",
+            discountType: "Freebie",
+            operationType: "RESTAURANT",
+          },
+        ],
+        subHeader: "",
+        headerType: 0,
+        superFreedel: "",
+      },
+      aggregatedDiscountInfoV2: {
+        header: "10% OFF",
+        shortDescriptionList: [
+          {
+            meta: "",
+            discountType: "Percentage",
+            operationType: "RESTAURANT",
+          },
+        ],
+        descriptionList: [
+          {
+            meta: "10% off on all orders",
+            discountType: "Percentage",
+            operationType: "RESTAURANT",
+          },
+          {
+            meta: "Free Gulab Jamun on orders above ₹399",
+            discountType: "Freebie",
+            operationType: "RESTAURANT",
+          },
+        ],
+        subHeader: "",
+        headerType: 0,
+        superFreedel: "",
+      },
+      chain: [],
+      feeDetails: {
+        fees: [
+          {
+            name: "distance",
+            fee: 3300,
+            message: "",
+          },
+          {
+            name: "time",
+            fee: 0,
+            message: "",
+          },
+          {
+            name: "special",
+            fee: 0,
+            message: "",
+          },
+        ],
+        totalFees: 3300,
+        message: "",
+        title: "Delivery Charge",
+        amount: "3300",
+        icon: "",
+      },
+      availability: {
+        opened: true,
+        nextOpenMessage: "",
+        nextCloseMessage: "",
+      },
+      longDistanceEnabled: 0,
+      rainMode: "NONE",
+      thirdPartyAddress: false,
+      thirdPartyVendor: "",
+      adTrackingID: "",
+      badges: {
+        imageBased: [],
+        textBased: [],
+        textExtendedBadges: [],
+      },
+      lastMileTravelString: "2.5 kms",
+      hasSurge: false,
+      sla: {
+        restaurantId: "11199",
+        deliveryTime: 21,
+        minDeliveryTime: 21,
+        maxDeliveryTime: 21,
+        lastMileTravel: 2.5999999046325684,
+        lastMileDistance: 0,
+        serviceability: "SERVICEABLE",
+        rainMode: "NONE",
+        longDistance: "NOT_LONG_DISTANCE",
+        preferentialService: false,
+        iconType: "EMPTY",
+      },
+      promoted: false,
+      avgRating: "3.9",
+      totalRatings: 10000,
+      new: false,
+    },
+    subtype: "basic",
+  },
+  {
+    type: "restaurant",
+    data: {
+      type: "F",
+      id: "589869",
+      name: "Surya Mangal Dining and Banquet",
+      uuid: "455fae0e-eeda-441f-8483-f56956feb416",
+      city: "6",
+      area: "Ravet",
+      totalRatingsString: "20+ ratings",
+      cloudinaryImageId: "fpdlbggsodbixlj5ajt1",
+      cuisines: ["Indian", "Sweets"],
+      tags: [],
+      costForTwo: 40000,
+      costForTwoString: "₹400 FOR TWO",
+      deliveryTime: 27,
+      minDeliveryTime: 27,
+      maxDeliveryTime: 27,
+      slaString: "27 MINS",
+      lastMileTravel: 1.100000023841858,
+      slugs: {
+        restaurant: "surya-mangal-dining-and-banquet-bavdhan-bavdhan",
+        city: "pune",
+      },
+      cityState: "6",
+      address:
+        "S. NO. 2/6, 2/4/1 & 2/8/1, MANGAL DHARA, SHOP NO. 2, NEAR LONDON BRIDGE, PUNE, Dehu Cantonment Board, Pune, Maharashtra-412102",
+      locality: "Punvale Road",
+      parentId: 352834,
+      unserviceable: false,
+      veg: false,
+      select: false,
+      favorite: false,
+      tradeCampaignHeaders: [],
+      chain: [],
+      feeDetails: {
+        fees: [
+          {
+            name: "distance",
+            fee: 3300,
+            message: "",
+          },
+          {
+            name: "time",
+            fee: 0,
+            message: "",
+          },
+          {
+            name: "special",
+            fee: 0,
+            message: "",
+          },
+        ],
+        totalFees: 3300,
+        message: "",
+        title: "Delivery Charge",
+        amount: "3300",
+        icon: "",
+      },
+      availability: {
+        opened: true,
+        nextOpenMessage: "",
+        nextCloseMessage: "Closes soon",
+      },
+      longDistanceEnabled: 0,
+      rainMode: "NONE",
+      thirdPartyAddress: false,
+      thirdPartyVendor: "",
+      adTrackingID: "",
+      badges: {
+        imageBased: [],
+        textBased: [],
+        textExtendedBadges: [],
+      },
+      lastMileTravelString: "1.1 kms",
+      hasSurge: false,
+      sla: {
+        restaurantId: "589869",
+        deliveryTime: 27,
+        minDeliveryTime: 27,
+        maxDeliveryTime: 27,
+        lastMileTravel: 1.100000023841858,
+        lastMileDistance: 0,
+        serviceability: "SERVICEABLE",
+        rainMode: "NONE",
+        longDistance: "NOT_LONG_DISTANCE",
+        preferentialService: false,
+        iconType: "EMPTY",
+      },
+      promoted: false,
+      avgRating: "3.5",
+      totalRatings: 20,
+      new: false,
+    },
+    subtype: "basic",
+  },
+  {
+    type: "restaurant",
+    data: {
+      type: "F",
+      id: "16061",
+      name: "KFC",
+      uuid: "e02f2722-656a-444e-97ac-ceae2b4b42ec",
+      city: "6",
+      area: "Pimple Saudagar",
+      totalRatingsString: "10000+ ratings",
+      cloudinaryImageId: "56c9ab92bd79745fd152a30fa2525426",
+      cuisines: ["Burgers", "Biryani", "American", "Snacks", "Fast Food"],
+      tags: [],
+      costForTwo: 40000,
+      costForTwoString: "₹400 FOR TWO",
+      deliveryTime: 34,
+      minDeliveryTime: 34,
+      maxDeliveryTime: 34,
+      slaString: "34 MINS",
+      lastMileTravel: 7.699999809265137,
+      slugs: {
+        restaurant: "kfc-spot-18-mall-pimple-saudagar",
+        city: "pune",
+      },
+      cityState: "6",
+      address: "Spot 18 Mall, Pimple Saudagar, Pune",
+      locality: "Spot 18 Mall",
+      parentId: 547,
+      unserviceable: false,
+      veg: false,
+      select: false,
+      favorite: false,
+      tradeCampaignHeaders: [],
+      aggregatedDiscountInfo: {
+        header: "20% off",
+        shortDescriptionList: [
+          {
+            meta: "20% off | Use SWIGGYIT",
+            discountType: "Percentage",
+            operationType: "RESTAURANT",
+          },
+        ],
+        descriptionList: [
+          {
+            meta: "20% off up to ₹50 on select items | Use code SWIGGYIT",
+            discountType: "Percentage",
+            operationType: "RESTAURANT",
+          },
+        ],
+        subHeader: "",
+        headerType: 0,
+        superFreedel: "",
+      },
+      aggregatedDiscountInfoV2: {
+        header: "20% OFF",
+        shortDescriptionList: [
+          {
+            meta: "Use SWIGGYIT",
+            discountType: "Percentage",
+            operationType: "RESTAURANT",
+          },
+        ],
+        descriptionList: [
+          {
+            meta: "20% off up to ₹50 on select items | Use code SWIGGYIT",
+            discountType: "Percentage",
+            operationType: "RESTAURANT",
+          },
+        ],
+        subHeader: "",
+        headerType: 0,
+        superFreedel: "",
+      },
+      ribbon: [
+        {
+          type: "PROMOTED",
+        },
+      ],
+      chain: [],
+      feeDetails: {
+        fees: [
+          {
+            name: "distance",
+            fee: 6300,
+            message: "",
+          },
+          {
+            name: "time",
+            fee: 0,
+            message: "",
+          },
+          {
+            name: "special",
+            fee: 0,
+            message: "",
+          },
+        ],
+        totalFees: 6300,
+        message: "",
+        title: "Delivery Charge",
+        amount: "6300",
+        icon: "",
+      },
+      availability: {
+        opened: true,
+        nextOpenMessage: "",
+        nextCloseMessage: "",
+      },
+      longDistanceEnabled: 0,
+      rainMode: "NONE",
+      thirdPartyAddress: false,
+      thirdPartyVendor: "",
+      adTrackingID: "cid=6494584~p=13~eid=00000187-93c2-652f-225f-88c000b10d64",
+      badges: {
+        imageBased: [],
+        textBased: [],
+        textExtendedBadges: [],
+      },
+      lastMileTravelString: "7.6 kms",
+      hasSurge: false,
+      sla: {
+        restaurantId: "16061",
+        deliveryTime: 34,
+        minDeliveryTime: 34,
+        maxDeliveryTime: 34,
+        lastMileTravel: 7.699999809265137,
+        lastMileDistance: 0,
+        serviceability: "SERVICEABLE",
+        rainMode: "NONE",
+        longDistance: "NOT_LONG_DISTANCE",
+        preferentialService: false,
+        iconType: "EMPTY",
+      },
+      promoted: true,
+      avgRating: "4.0",
+      totalRatings: 10000,
+      new: false,
+    },
+    subtype: "basic",
+  },
+  {
+    type: "restaurant",
+    data: {
+      type: "F",
+      id: "520967",
+      name: "Thorat's Baarbeque Misal",
+      uuid: "e7ec7f47-51b7-4432-bf45-31c076acddfb",
+      city: "6",
+      area: "Expressway",
+      totalRatingsString: "20+ ratings",
+      cloudinaryImageId: "bar1qbufcowyxfhnhbif",
+      cuisines: ["Maharashtrian", "Snacks", "Beverages"],
+      tags: [],
+      costForTwo: 30000,
+      costForTwoString: "₹300 FOR TWO",
+      deliveryTime: 21,
+      minDeliveryTime: 21,
+      maxDeliveryTime: 21,
+      slaString: "21 MINS",
+      lastMileTravel: 1.2000000476837158,
+      slugs: {
+        restaurant: "thorat's-baarbeque-misal-wakad-wakad",
+        city: "pune",
+      },
+      cityState: "6",
+      address:
+        "Sr.No.129/1-2, Near Kailas Hotel, B.P Road, Tathawade, Pune 411033",
+      locality: "Tathawade",
+      parentId: 215902,
+      unserviceable: false,
+      veg: false,
+      select: false,
+      favorite: false,
+      tradeCampaignHeaders: [],
+      chain: [],
+      feeDetails: {
+        fees: [
+          {
+            name: "distance",
+            fee: 3300,
+            message: "",
+          },
+          {
+            name: "time",
+            fee: 0,
+            message: "",
+          },
+          {
+            name: "special",
+            fee: 0,
+            message: "",
+          },
+        ],
+        totalFees: 3300,
+        message: "",
+        title: "Delivery Charge",
+        amount: "3300",
+        icon: "",
+      },
+      availability: {
+        opened: true,
+        nextOpenMessage: "",
+        nextCloseMessage: "",
+      },
+      longDistanceEnabled: 0,
+      rainMode: "NONE",
+      thirdPartyAddress: false,
+      thirdPartyVendor: "",
+      adTrackingID: "",
+      badges: {
+        imageBased: [],
+        textBased: [],
+        textExtendedBadges: [],
+      },
+      lastMileTravelString: "1.2 kms",
+      hasSurge: false,
+      sla: {
+        restaurantId: "520967",
+        deliveryTime: 21,
+        minDeliveryTime: 21,
+        maxDeliveryTime: 21,
+        lastMileTravel: 1.2000000476837158,
+        lastMileDistance: 0,
+        serviceability: "SERVICEABLE",
+        rainMode: "NONE",
+        longDistance: "NOT_LONG_DISTANCE",
+        preferentialService: false,
+        iconType: "EMPTY",
+      },
+      promoted: false,
+      avgRating: "3.1",
+      totalRatings: 20,
+      new: false,
+    },
+    subtype: "basic",
+  },
+  {
+    type: "restaurant",
+    data: {
+      type: "F",
+      id: "6590",
+      name: "Rolls Mania",
+      uuid: "ae361ef7-3209-419f-a8fc-a1b79902fe2f",
+      city: "6",
+      area: "Akurdi",
+      totalRatingsString: "10000+ ratings",
+      cloudinaryImageId: "jecjtpx5bw3tdfatuva7",
+      cuisines: ["Fast Food", "Snacks"],
+      tags: [],
+      costForTwo: 20000,
+      costForTwoString: "₹200 FOR TWO",
+      deliveryTime: 20,
+      minDeliveryTime: 20,
+      maxDeliveryTime: 20,
+      slaString: "20 MINS",
+      lastMileTravel: 2.4000000953674316,
+      slugs: {
+        restaurant: "rolls-mania-akurdi-nigdi",
+        city: "pune",
+      },
+      cityState: "6",
+      address:
+        "Shop no. 7, Royale Shell, D Y Patil Engineering College, Gurudwara Colony, Ravet, Pune - 411044",
+      locality: "Gurudwara Colony",
+      parentId: 171118,
+      unserviceable: false,
+      veg: false,
+      select: false,
+      favorite: false,
+      tradeCampaignHeaders: [],
+      aggregatedDiscountInfo: {
+        header: "30% off",
+        shortDescriptionList: [
+          {
+            meta: "30% off | Use TRYNEW",
+            discountType: "Percentage",
+            operationType: "RESTAURANT",
+          },
+        ],
+        descriptionList: [
+          {
+            meta: "30% off up to ₹75 | Use code TRYNEW",
+            discountType: "Percentage",
+            operationType: "RESTAURANT",
+          },
+        ],
+        subHeader: "",
+        headerType: 0,
+        superFreedel: "",
+      },
+      aggregatedDiscountInfoV2: {
+        header: "30% OFF",
+        shortDescriptionList: [
+          {
+            meta: "Use TRYNEW",
+            discountType: "Percentage",
+            operationType: "RESTAURANT",
+          },
+        ],
+        descriptionList: [
+          {
+            meta: "30% off up to ₹75 | Use code TRYNEW",
+            discountType: "Percentage",
+            operationType: "RESTAURANT",
+          },
+        ],
+        subHeader: "",
+        headerType: 0,
+        superFreedel: "",
+      },
+      chain: [],
+      feeDetails: {
+        fees: [
+          {
+            name: "distance",
+            fee: 3300,
+            message: "",
+          },
+          {
+            name: "time",
+            fee: 0,
+            message: "",
+          },
+          {
+            name: "special",
+            fee: 0,
+            message: "",
+          },
+        ],
+        totalFees: 3300,
+        message: "",
+        title: "Delivery Charge",
+        amount: "3300",
+        icon: "",
+      },
+      availability: {
+        opened: true,
+        nextOpenMessage: "",
+        nextCloseMessage: "",
+      },
+      longDistanceEnabled: 0,
+      rainMode: "NONE",
+      thirdPartyAddress: false,
+      thirdPartyVendor: "",
+      adTrackingID: "",
+      badges: {
+        imageBased: [],
+        textBased: [],
+        textExtendedBadges: [],
+      },
+      lastMileTravelString: "2.4 kms",
+      hasSurge: false,
+      sla: {
+        restaurantId: "6590",
+        deliveryTime: 20,
+        minDeliveryTime: 20,
+        maxDeliveryTime: 20,
+        lastMileTravel: 2.4000000953674316,
+        lastMileDistance: 0,
+        serviceability: "SERVICEABLE",
+        rainMode: "NONE",
+        longDistance: "NOT_LONG_DISTANCE",
+        preferentialService: false,
+        iconType: "EMPTY",
+      },
+      promoted: false,
+      avgRating: "4.2",
+      totalRatings: 10000,
+      new: false,
+    },
+    subtype: "basic",
+  },
+];
+
+const Body = () => {
+  return (
+    <div className="body">
+      <div className="search">Search</div>
+      <div className="res-container">
+        {resList.map((restaurant) => (
+          <RestaurantCard key={restaurant.data.id} resData={restaurant} />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+const AppLayout = () => {
+  return (
+    <div className="app">
+      <Header />
+      <Body />
+    </div>
+  );
+};
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-root.render(<HeadingComponent />);
+root.render(<AppLayout />);
