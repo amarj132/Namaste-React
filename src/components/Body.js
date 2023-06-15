@@ -3,13 +3,9 @@ import resList from "../utils/mockData";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import { filterData } from "../utils/helper";
+import useOnline from "../utils/useOnline";
 
-function filterData(searchText, restaurant) {
-  const filterData = restaurant.filter((restaurants) =>
-    restaurants?.data?.name?.toLowerCase()?.includes(searchText.toLowerCase())
-  );
-  return filterData;
-}
 
 const Body = () => {
   //Local state variable - Super powerfull variable
@@ -22,12 +18,19 @@ const Body = () => {
   }, []);
 
   async function getRestaurants() {
+    
     const data = await fetch(
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.6344254&lng=73.7409321&page_type=DESKTOP_WEB_LISTING"
     );
     const json = await data.json();
     setAllRestaurant(json?.data?.cards[2]?.data?.data?.cards);
     setFilteredListRestaurant(json?.data?.cards[2]?.data?.data?.cards);
+  }
+
+  const isOnline = useOnline();
+
+  if(!isOnline){
+    return <h1>offline,please check your internet connection!!</h1>
   }
 
   if (!allRestaurant) return null;

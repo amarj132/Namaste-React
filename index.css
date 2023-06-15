@@ -2,6 +2,7 @@
     display: flex;
     justify-content: space-between;
     border: 1px solid black;
+    width: 100%;
 }
 
 .logo {
@@ -58,8 +59,8 @@
 
 .login {
     padding: 0 20px;
-    margin: 0 10px;
- 
+    margin: 10px 10px;
+    height: 50px;
     cursor: pointer;
 }
 
@@ -69,4 +70,10 @@
 
 .menu {
     display: flex;
+}
+
+.onlinelogin{
+    padding: 0 20px;
+    margin: 0 10px;
+    height: 50px;
 }
