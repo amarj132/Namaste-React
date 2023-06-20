@@ -24,19 +24,19 @@ const RestaurantMenu = () => {
     areaName,
   } = restaurant?.cards[0]?.card?.card?.info;
   return (
-    <div className="menu">
-      <div>
-        <h2>{name}</h2>
-        <img src={CDN_URL + cloudinaryImageId} />
-        <h3>{areaName}</h3>
-        <h3>{city}</h3>
-        <h3>{avgRating}</h3>
-        <h3>{costForTwoMessage}</h3>
+    <div className="flex p-2 justify-center shadow-sm  ">
+      <div className="mr-4">
+        <h2 className="font-bold text-xl">{name}</h2>
+        <img className="w-96 p-2" src={CDN_URL + cloudinaryImageId} />
+        <h3 className="text-xl">{areaName}</h3>
+        <h3 className="text-xl">{city}</h3>
+        <h3 className="text-xl">{avgRating}</h3>
+        <h3 className="text-xl">{costForTwoMessage}</h3>
       </div>
 
-      <div>
-        <h2>Menu</h2>
-        <ul>
+      <div className="  ml-4 ">
+        <h2 className="font-bold p-2  text-xl">Menu</h2>
+        <ul className="p-2  ">
           {restaurant?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card?.itemCards?.map(
             (item) => (
               <li key={item?.card?.info?.id}>
