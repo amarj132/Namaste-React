@@ -1,12 +1,14 @@
 import { LOGO_URL } from "../utils/constants";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import useOnline from "../utils/useOnline";
+import UserContext from "../utils/UserContext";
 
 const Header = () => {
   const [btnNameReact, setBtnNameReact] = useState("Login");
 
   const isOnline = useOnline();
+  const { user } = useContext(UserContext);
 
   return (
     <div className="flex justify-between bg-pink-50 shadow-lg">
@@ -32,17 +34,18 @@ const Header = () => {
         </ul>
       </div>
       <div className="flex">
-      <h1 className="py-10 px-2"> {isOnline ? "✅" : "🚫"}</h1>
-      <button
-        className=" px-2"
-        onClick={() => {
-          btnNameReact === "Login"
-            ? setBtnNameReact("Logout")
-            : setBtnNameReact("Login");
-        }}
-      >
-        {btnNameReact}
-      </button>
+        <h1 className="py-10 px-2"> {isOnline ? "✅" : "🚫"}</h1>
+        <span className="py-10 px-2 text-red-900">{user.name}</span>
+        <button
+          className=" px-2"
+          onClick={() => {
+            btnNameReact === "Login"
+              ? setBtnNameReact("Logout")
+              : setBtnNameReact("Login");
+          }}
+        >
+          {btnNameReact}
+        </button>
       </div>
     </div>
   );

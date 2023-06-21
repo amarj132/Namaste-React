@@ -1,24 +1,25 @@
 import RestaurantCard from "./RestaurantCard";
 import resList from "../utils/mockData";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import { filterData } from "../utils/helper";
 import useOnline from "../utils/useOnline";
 
+import UserContext from "../utils/UserContext";
 
 const Body = () => {
   //Local state variable - Super powerfull variable
   const [allRestaurant, setAllRestaurant] = useState([]);
   const [filteredRestaurant, setFilteredListRestaurant] = useState(resList);
   const [searchText, setSearchText] = useState("");
+  const { user, setUser } = useContext(UserContext);
 
   useEffect(() => {
     getRestaurants();
   }, []);
 
   async function getRestaurants() {
-    
     const data = await fetch(
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.6344254&lng=73.7409321&page_type=DESKTOP_WEB_LISTING"
     );
@@ -29,8 +30,8 @@ const Body = () => {
 
   const isOnline = useOnline();
 
-  if(!isOnline){
-    return <h1>offline,please check your internet connection!!</h1>
+  if (!isOnline) {
+    return <h1>offline,please check your internet connection!!</h1>;
   }
 
   if (!allRestaurant) return null;
@@ -60,6 +61,15 @@ const Body = () => {
           >
             Search
           </button>
+          <input
+            value={user.name}
+            onChange={(e) =>
+              setUser({
+                name: e.target.value,
+                email: "aj@gmail.com",
+              })
+            }
+          ></input>
         </div>
         {/* <div className="filter">
           <button
@@ -78,7 +88,14 @@ const Body = () => {
 
         <div className="flex flex-wrap ">
           {filteredRestaurant?.map((restaurant) => (
-           <Link className="link" key={restaurant?.data?.id} to={"/restaurant/" + restaurant?.data?.id} > <RestaurantCard  resData={restaurant} /> </Link>
+            <Link
+              className="link"
+              key={restaurant?.data?.id}
+              to={"/restaurant/" + restaurant?.data?.id}
+            >
+              {" "}
+              <RestaurantCard resData={restaurant} />{" "}
+            </Link>
           ))}
         </div>
       </div>
