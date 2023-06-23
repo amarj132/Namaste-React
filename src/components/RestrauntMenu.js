@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import { CDN_URL, MENU_API } from "../utils/constants";
 import Shimmer from "./Shimmer";
 import useRestaurant from "../utils/useRestaurant";
+import { addItem } from "../utils/cartSlice";
+import { useDispatch } from "react-redux";
 
 const RestaurantMenu = () => {
   const params = useParams();
@@ -11,6 +13,16 @@ const RestaurantMenu = () => {
   // const [restaurant, setRestaurant] = useState(null);
 
   const restaurant = useRestaurant(id);
+
+  const dispatch = useDispatch();
+
+  //  const handleAddItem = () => {
+  //   dispatch(addItem("Grapes"))
+  //  }
+
+  const addFoodItem = (item) => {
+    dispatch(addItem(item?.card?.info));
+  };
 
   if (!restaurant) {
     return <Shimmer />;
@@ -43,6 +55,13 @@ const RestaurantMenu = () => {
                 {item?.card?.info?.name} -{" "}
                 {item?.card?.info?.price / 100 ||
                   item?.card?.info?.defaultPrice / 100}
+                -
+                <button
+                  className="p-1 bg-green-50"
+                  onClick={() => addFoodItem(item)}
+                >
+                  Add{" "}
+                </button>
               </li>
             )
           )}
