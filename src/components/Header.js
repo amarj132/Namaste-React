@@ -19,7 +19,7 @@ const Header = () => {
   return (
     <div className="flex justify-between bg-pink-50 shadow-lg">
       <div className="logo-container">
-        <img className="h-28 p-2 " src={LOGO_URL} />
+        <img data-testid= "logo" className="h-28 p-2 " src={LOGO_URL} />
       </div>
       <div className="">
         <ul className="flex justify-between py-10">
@@ -37,12 +37,12 @@ const Header = () => {
             <Link to="/instamart">Instamart</Link>
           </li>
           <Link to="/cart" >
-          <li className="px-2">Cart {cartItems.length} </li>
+          <li className="px-2" data-testid = "cart">Cart {cartItems.length} </li>
           </Link>
         </ul>
       </div>
       <div className="flex">
-        <h1 className="py-10 px-2"> {isOnline ? "✅" : "🚫"}</h1>
+        <h1 data-testid='online-status' className="py-10 px-2"> {isOnline ?"✅" : "🚫"}</h1>
         <span className="py-10 px-2 text-red-900">{user.name}</span>
         <button
           className=" px-2"

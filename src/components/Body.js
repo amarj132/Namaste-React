@@ -27,7 +27,6 @@ const Body = () => {
     setAllRestaurant(json?.data?.cards[2]?.data?.data?.cards);
     setFilteredListRestaurant(json?.data?.cards[2]?.data?.data?.cards);
   }
-
   const isOnline = useOnline();
 
   if (!isOnline) {
@@ -53,6 +52,7 @@ const Body = () => {
             }}
           />
           <button
+            data-testid="search-btn"
             className="p-2 m-2 bg-purple-400 hover:bg-purple-700 text-white rounded-md"
             onClick={() => {
               const data = filterData(searchText, allRestaurant);
@@ -86,7 +86,7 @@ const Body = () => {
           </button>
         </div> */}
 
-        <div className="flex flex-wrap ">
+        <div className="flex flex-wrap " data-testid="res-list">
           {filteredRestaurant?.map((restaurant) => (
             <Link
               className="link"
